@@ -1,0 +1,40 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: jessflix-videos # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+package:
+  exclude:
+    - node_modules/**
+    - README.md
+    - token.json
+    - package-lock.json
+
+functions:
+  get-data:
+    handler: get-data.data
+    environment:
+      CHANNEL_ID: ${CHANNEL_ID}
+      API_KEY: ${API_KEY}
+      DYNAMODB_TABLE: ${DYNAMODB_TABLE}
+    events:
+      - schedule:
+          rate: rate(1 minute)
+      - http:
+          path: /update
+          method: get
+          private: true

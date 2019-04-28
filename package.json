@@ -1,0 +1,16 @@
+{
+  "name": "jessflix",
+  "version": "1.0.0",
+  "description": "",
+  "main": "get-data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node get-data"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.358.0",
+    "simple-youtube-api": "^5.1.1"
+  }
+}
